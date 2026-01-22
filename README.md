@@ -2,6 +2,7 @@
 ## Resources: Supabase or Postgres SQL, Google Sheets and Google Looker Studio
 - [Phase 1: Solving Key SQL Problems](#phase-1-solving-key-sql-problems)
 - [Phase 2: The Strategic Insights From The Looker Studio Dashboard](#phase-2-the-strategic-insights-from-the-looker-studio-dashboard)
+- [Data set](https://datadna.onyxdata.co.uk/challenges/november-2025-datadna-ecommerce-analytics-challenge/)
 
 # Summary
 - I started this project in Postgres SQL with two goals: build a Single Source of Truth (SSOT) for the given performance data and visualize it with Looker Studio. I decided on this workflow: Supabase SQL -> Google Sheets -> Looker Studio.
