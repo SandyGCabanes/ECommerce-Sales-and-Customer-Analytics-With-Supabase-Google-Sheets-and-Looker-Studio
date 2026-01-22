@@ -202,7 +202,7 @@ I proceeded to do a lot more preliminary analysis using Postgres SQL in Supabase
 - ![Sales](assets/page4_sales.PNG)
 
 - Here are the key Data Insights and the Strategic Actions.
-Data Insights and Strategic Action:
+
 - ![Insights and Actions Table](assets/6.focus_areas.PNG)
 
 ## Recap
