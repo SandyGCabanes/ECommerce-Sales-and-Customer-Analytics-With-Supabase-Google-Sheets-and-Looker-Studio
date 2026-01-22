@@ -190,16 +190,16 @@ ORDER BY DATE_TRUNC('month', event_date)::date
 
 ```
 I proceeded to do a lot more preliminary analysis using Postgres SQL in Supabase. 
-- [SQL scripts used in Supabase for set-up](sql/supabase_scripts.sql)
-- [SQL scripts used in Supabase for preliminary analysis ](sql/supabase_scripts.sql) 
+- [SQL scripts used in Supabase for set-up](sql/supabase_scripts_setup.sql)
+- [SQL scripts used in Supabase for preliminary analysis ](sql/supabase_scripts_analysis.sql) 
 
 ## Phase 2: The Strategic Insights From the Looker Studio Dashboard
 - After combining the Views into a gold layer, I exported the csv from Supabase and imported it into Google Sheets. So, I was able to proceed with the Looker Studio visualizations.
 - I organized them into four pages: Overview, Repeat Customers, Products and Sales Details.
 - ![Overview](assets/page1_overview.PNG)
-- ![Repeat Customers](asses/page2_repeat_customers.PNG)
-- ![Products](page3_products.PNG)
-- ![Sales](page4_sales.PNG)
+- ![Repeat Customers](assets/page2_repeat_customers.PNG)
+- ![Products](assets/page3_products.PNG)
+- ![Sales](assets/page4_sales.PNG)
 
 - Here are the key Data Insights and the Strategic Actions.
 Data Insights and Strategic Action:
