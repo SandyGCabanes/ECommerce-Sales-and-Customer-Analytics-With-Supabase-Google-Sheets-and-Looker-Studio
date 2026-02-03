@@ -1,16 +1,33 @@
 # Ecommerce Sales and Customer Analytics with Supabase, Google Sheets and Looker Studio
-## Resources: Supabase or Postgres SQL, Google Sheets and Google Looker Studio
-- [Phase 1: Solving Key SQL Problems](#phase-1-solving-key-sql-problems)
-- [Phase 2: The Strategic Insights From The Looker Studio Dashboard](#phase-2-the-strategic-insights-from-the-looker-studio-dashboard)
-- [Data set](https://datadna.onyxdata.co.uk/challenges/november-2025-datadna-ecommerce-analytics-challenge/)
+## Tools: Supabase (Postgres SQL), Google Sheets, Google Looker Studio  
+Dataset: https://datadna.onyxdata.co.uk/challenges/november-2025-datadna-ecommerce-analytics-challenge/
 
-# Summary
-- I started this project in Postgres SQL with two goals: build a Single Source of Truth (SSOT) for the given performance data and visualize it with Looker Studio. I decided on this workflow: Supabase SQL -> Google Sheets -> Looker Studio.
-- My take after all of this: while revenue grew 19% vs. YA, monthly revenue has stalled at about $500K. Most growth is coming from repeat customers. It is important to take care of repeaters and not let them churn. Moving forward, to jump-start monthly revenue growth, the business needs to pull levers surfaced in this analysis.
-## The Data Journey From ETL to Insights
-- First, I used SQL for a lot of the complicated data manipulations, since I had to solve five main challenges.
-- My process was an equivalent of the Medallion Architecture, where the bronze layer has raw tables, the silver layer has cleaned views with added fields, and the gold layer has the combined view of all three views, plus the aggregate market basket table for the cross-selling analysis.
-  
+# Overview  
+This analysis establishes a validated revenue definition, standardizes customer and product data, and consolidates all tables into a single analytical layer for reporting. The resulting dashboard provides visibility into revenue trends, customer retention, product performance, and refund behavior.
+
+# Key Insights
+- ![Insights and Actions Table](assets/6.focus_areas.PNG)
+
+- [Dashboards Section](#dashboards)
+
+
+# Technical Foundation 
+- Revenue integrity was established by isolating non‑refunded invoices as the only source of confirmed revenue.  
+- All dates were standardized to month‑start to ensure consistent time‑series aggregation.  
+- Window functions were used to identify repeat customers and compute wait_days.  
+- A unified semantic layer was created by joining cleaned event, customer, and product views.  
+- This layer feeds the Looker Studio dashboard, which is organized into Overview, Repeat Customers, Products, and Sales Details.
+
+# Strategic Actions  
+- Strengthen retention programs targeting early repeat behavior.  
+- Expand annual plan offerings and optimize conversion flows.  
+- Investigate high‑refund product lines and address root causes.  
+- Rebuild attachment rate through targeted cross‑sell and bundling.  
+- Evaluate acquisition channels for quality rather than volume.  
+- Explore growth markets where repeat behavior is strongest.
+
+---
+# Appendix: Technical Discussion  
 ## 0. Pre-Work: Cleaning data in SQL
 As with every project, I needed to see if there were duplicates, if there were blanks, and if there were strange fonts. I did these from the raw stage tables (bronze) to the views (silver).
 
@@ -196,12 +213,13 @@ I proceeded to do a lot more preliminary analysis using Postgres SQL in Supabase
 ## Phase 2: The Strategic Insights From the Looker Studio Dashboard
 - After combining the Views into a gold layer, I exported the csv from Supabase and imported it into Google Sheets. So, I was able to proceed with the Looker Studio visualizations.
 - I organized them into four pages: Overview, Repeat Customers, Products and Sales Details.
+  ### Dashboards
 - ![Overview](assets/page1_overview.PNG)
 - ![Repeat Customers](assets/page2_repeat_customers.PNG)
 - ![Products](assets/page3_products.PNG)
 - ![Sales](assets/page4_sales.PNG)
 
-- Here are the key Data Insights and the Strategic Actions.
+- Here is a recap of the key Data Insights and the Strategic Actions.
 
 - ![Insights and Actions Table](assets/6.focus_areas.PNG)
 
