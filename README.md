@@ -218,7 +218,7 @@ I proceeded to do a lot more preliminary analysis using Postgres SQL in Supabase
 - ![Repeat Customers](assets/page2_repeat_customers.PNG)
 - ![Products](assets/page3_products.PNG)
 - ![Sales](assets/page4_sales.PNG)
-[Back to top - Technical Summary](#technical-foundation)
+[Back to top - Technical Foundation](#technical-foundation)
 
 - Here is a recap of the key Data Insights and the Strategic Actions.
 
