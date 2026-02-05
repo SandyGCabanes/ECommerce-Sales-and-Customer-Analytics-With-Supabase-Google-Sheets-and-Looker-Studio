@@ -3,7 +3,7 @@
 [Click Here for the Dataset](https://datadna.onyxdata.co.uk/challenges/november-2025-datadna-ecommerce-analytics-challenge/)
 
 # Overview  
-To support consistent reporting, the analysis defines a clear revenue standard and aligns customer and product information across sources. All data is consolidated into a single analytical layer, making it easier to track revenue patterns, understand customer behavior, evaluate product performance, and monitor refunds. The dashboard gives teams a reliable view of what is driving growth and where attention is needed
+The analysis highlights steady revenue growth driven by repeat customers and a small set of consistently high‑performing products. Refunds remain concentrated in a few SKUs, giving teams a clear target for quality checks. Customer retention shows early signs of improvement, especially among first‑time buyers who convert within their first 30 days. All metrics are grounded in a unified revenue definition and standardized customer and product data, ensuring the dashboard reflects a single, reliable view of performance.
 
 # Key Insights
 - ![Insights and Actions Table](assets/6.focus_areas.PNG)
