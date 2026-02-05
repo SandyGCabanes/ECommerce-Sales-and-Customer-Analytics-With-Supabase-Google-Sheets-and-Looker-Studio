@@ -3,7 +3,7 @@
 [Click Here for the Dataset](https://datadna.onyxdata.co.uk/challenges/november-2025-datadna-ecommerce-analytics-challenge/)
 
 # Overview  
-The analysis highlights steady revenue growth driven by repeat customers and annual products. Customer retention is solid, with the average repeat happening in just a few days. Refunds are driven by some distinct categories, giving teams a clear priority list for quality checks. All metrics are grounded in a unified revenue definition and standardized customer and product data, ensuring the dashboard reflects a single, reliable view of performance.
+The analysis shows that revenue growth is being driven almost entirely by repeat customers, with strong momentum in key markets like Germany and Australia. Annual plans deliver far higher value per customer, but attachment rates for add‑ons are slipping and refund losses are rising in several product categories. Grounded in a unified revenue definition and standardized customer and product data, the dashboard brings these patterns together so teams can focus on protecting high‑value customers, doubling down on fast‑growing regions, improving plan mix, restoring add‑on performance, and addressing the root causes of refunds.
 
 # Key Insights
 - ![Insights and Actions Table](assets/6.focus_areas.PNG)
