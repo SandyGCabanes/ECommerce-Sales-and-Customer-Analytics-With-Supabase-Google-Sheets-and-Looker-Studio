@@ -194,7 +194,7 @@ Preliminary analysis was also done in Postgres SQL in Supabase.
 
   
 ## Phase 2: The Strategic Insights From the Looker Studio Dashboard
-- After combining the Views into a final layer, csv file can be exported from Supabase and imported it into Google Sheets.
+- After combining the Views into a final semantic layer, csv file can be exported from Supabase and imported it into Google Sheets.
 - Dashboard here uses Google Looker Studio visualizations.
 - Four pages in the dashboard: Overview, Repeat Customers, Products and Sales Details.
 - 
