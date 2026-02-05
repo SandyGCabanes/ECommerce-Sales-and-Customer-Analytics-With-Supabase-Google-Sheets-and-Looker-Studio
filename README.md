@@ -3,7 +3,7 @@
 [Click Here for the Dataset](https://datadna.onyxdata.co.uk/challenges/november-2025-datadna-ecommerce-analytics-challenge/)
 
 # Overview  
-The analysis highlights steady revenue growth driven by repeat customers and a small set of consistently high‑performing products. Refunds remain concentrated in a few SKUs, giving teams a clear target for quality checks. Customer retention shows early signs of improvement, especially among first‑time buyers who convert within their first 30 days. All metrics are grounded in a unified revenue definition and standardized customer and product data, ensuring the dashboard reflects a single, reliable view of performance.
+The analysis highlights steady revenue growth driven by repeat customers and annual products. Customer retention is solid, with the average repeat happening in just a few days. Refunds are driven by some distinct categories, giving teams a clear priority list for quality checks. All metrics are grounded in a unified revenue definition and standardized customer and product data, ensuring the dashboard reflects a single, reliable view of performance.
 
 # Key Insights
 - ![Insights and Actions Table](assets/6.focus_areas.PNG)
