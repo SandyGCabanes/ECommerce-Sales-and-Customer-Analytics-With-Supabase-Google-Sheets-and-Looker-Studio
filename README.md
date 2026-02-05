@@ -3,7 +3,11 @@
 [Click Here for the Dataset](https://datadna.onyxdata.co.uk/challenges/november-2025-datadna-ecommerce-analytics-challenge/)
 
 # Overview  
-The analysis shows that revenue growth is being driven almost entirely by repeat customers, with strong momentum in key markets like Germany and Australia. Annual plans deliver far higher value per customer, but attachment rates for add‑ons are slipping and refund losses are rising in several product categories. This report uses a unified revenue definition as a single source of truth,  so that teams see consistent numbers across the dashboard.  The dashboard itself consolidates the insights in four blocks: Overview, Repeat Customers, Products and Sales, to reveal repeat customers worth protecting, fast‑growing regions worth investigating for new revenues, improving plan mix, restoring add‑on performance, and explore root causes of refunds.
+- Revenue growth is being driven almost entirely by repeat customers.  Need to protect this revenue stream with loyalty boosting efforts.
+- Monthly revenue is levelling off. Strong momentum in key markets like Germany and Australia can help jumpstart new revenue.
+- Annual plans deliver far higher value per customer. This needs to be prioritized.
+- Attachment rates for add‑ons are slipping and refund losses are rising in several product categories.  Need to investigate causes to craft next steps.
+- In terms of process: This report establishes a unified revenue definition as a single source of truth,  so that teams see consistent numbers across the dashboard.
 
 # Key Insights
 - ![Insights and Actions Table](assets/6.focus_areas.PNG)
@@ -205,7 +209,7 @@ Preliminary analysis was also done in Postgres SQL in Supabase.
 
 - ![Insights and Actions Table](assets/6.focus_areas.PNG)
 
-## Recap
+## Key takeaways:
 - Total revenue is up, driven by repeat customers.
 - Monthly revenue is levelling off, so high-momentum regions can be explored.
 - Separately, the business needs to ensure that repeat customers do not churn.
