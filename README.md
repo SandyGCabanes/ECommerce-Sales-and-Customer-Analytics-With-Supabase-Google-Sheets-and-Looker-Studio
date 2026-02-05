@@ -41,152 +41,25 @@ Checked for duplicates, blanks, strange fonts from raw stage(staging) to views (
   
 A. Data Integrity: Defining Real Revenue
 - A common complaint is that dashboards do not contain correct information. Not all Orders proceed to Invoices, and most Invoices do not even pass through Orders stage. 
-
-```
-| category            | cnt   |
-| ------------------- | ----- |
-| orders_not_proceed  | 33482 |
-| invoices_not_orders | 14280 |
-| orders_proceed      | 119   | 
-```
 - To provide a Single Source of Truth and accurate Sales figures, only invoice data are pulled if they are not refunded. This is added as another field.
-  
-```
--- SQL pulls in only invoices 
---  Removes anything that is not confirmed revenue
-ALTER TABLE events_raw
-ADD COLUMN final_net_revenue_usd float;
-
-UPDATE events_raw
-SET final_net_revenue_usd =
-    CASE 
-        WHEN event_type = 'invoice' AND is_refunded = FALSE 
-        THEN net_revenue_usd
-        ELSE 0
-    END; 
- ```
-
 
 B. Data Integrity: Cleaning Up Time Series
 - Monthly standardization was needed for the dashboard, especially for monthly revenue.
-```
--- SQL year_month column
--- Adding a column and populating it with the first day of the month 
--- Using DATE_TRUNC to enable accurate time-series trending
-
-ALTER TABLE events_raw
-ADD COLUMN year_month date;
-
-UPDATE events_raw
-SET year_month = DATE_TRUNC('month', event_date)::date;      
-```
-
 
 C. Metric Creation: Spotting Repeat Customers
 - To track loyalty, this SQL script defines the flag for repeat customers by tracking who was buying more than once, using window functions.
 - The idea is check the purchase events of each customer and a repeater is someone who had a second purchase ever.
 - Here, ROW_NUMBER() + OVER() is used to flag repeat customers where row number = 2.
 
-```
--- SQL Action: Marking repeat customers
--- Joining the days_since_last_invoice from previous events_final_new view to customers_raw
--- Using Window Functions to identify customer's purchase order
-
-CREATE OR REPLACE VIEW customers_final AS
-WITH second_purchases AS (
-  SELECT
-    customer_id,
-    event_date AS second_purchase_date,
-    days_since_last_invoice AS wait_days,
-    ROW_NUMBER() OVER (
-      PARTITION BY customer_id
-      ORDER BY event_date ASC
-    ) AS rownum
-  FROM events_final_new
-  WHERE event_type = 'invoice'
-)
-SELECT
-  c.*,
-  sp.second_purchase_date,  
-  sp.wait_days,
-  CASE 
-    WHEN sp.rownum = 2 THEN TRUE
-    ELSE FALSE
-  END AS is_repeater,
-  DATE_TRUNC('month', signup_date::date)::date as signup_year_month
-FROM customers_raw c
-LEFT JOIN second_purchases sp
-  ON c.customer_id = sp.customer_id
- AND sp.rownum = 2;  
-```
 
 D. Performance: Building The Final View as SSOT
 - Finally, all clean data views (intermediate) for each of the initial tables into one simple View (mart)for the dashboard.
 
-```
--- SQL Action: Creating the final semantic layer
-CREATE OR REPLACE VIEW combined AS
-SELECT
-  -- event-level (bring all columns from events_final_new)
-  efn.*,
-
-  -- customer-level columns (aliased to avoid collisions)
-  c.customer_id            AS customer_id_c,
-  -- all other fields
-  -- plus new fields defined in views:
-  c.wait_days,
-  c.is_repeater,
-  c.signup_year_month,
-
-  -- product-level columns (aliased to avoid collisions)
-  p.product_id             AS product_id_p,
-  p.product_name,
-  -- plus all other fields
-FROM events_final_new efn
-LEFT JOIN customers_final c
-  ON efn.customer_id = c.customer_id
-LEFT JOIN products_final p
-  ON efn.product_id = p.product_id;    
-```
 
 E. Preliminary Exploration of Monthly Revenue
 - Now with the combined view, true monthly revenue can be analyzed. 
 - The SQL figures showed that these have levelled off at around 500K per month.
-```
--- Monthly revenue
 
-SELECT 
-DATE_TRUNC('month', event_date)::date as year_month,
-SUM(final_net_revenue_usd) as revenues_monthly
-FROM events_final_new
-GROUP BY DATE_TRUNC('month', event_date)::date 
-ORDER BY DATE_TRUNC('month', event_date)::date
-;
-/**
-| year_month | revenues_monthly |
-| ---------- | ---------------- |
-| 2024-04-01 | 121910.57        |
-| 2024-05-01 | 506388.55        |
-| 2024-06-01 | 497415.93        |
-| 2024-07-01 | 515789.25        |
-| 2024-08-01 | 514981.49        |
-| 2024-09-01 | 485344.2         |
-| 2024-10-01 | 497218.31        |
-| 2024-11-01 | 539982.86        |
-| 2024-12-01 | 510467.54        |
-| 2025-01-01 | 503820.91        |
-| 2025-02-01 | 435042.44        |
-| 2025-03-01 | 551035.06        |
-| 2025-04-01 | 536679.05        |
-| 2025-05-01 | 491885.35        |
-| 2025-06-01 | 557434.55        |
-| 2025-07-01 | 535488.2         |
-| 2025-08-01 | 504317.43        |
-| 2025-09-01 | 496518.91        |
-| 2025-10-01 | 373970.69        |
-**/      
-
-```
 Preliminary analysis was also done in Postgres SQL in Supabase. 
 
 - [SQL scripts used in Supabase for preliminary analysis ](sql/supabase_scripts_analysis.sql) 
