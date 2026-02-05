@@ -29,11 +29,14 @@ The analysis shows that revenue growth is being driven almost entirely by repeat
 ---
 # Appendix: Technical Discussion  
 ## 0. Pre-Work: Cleaning data in SQL
-As with every project, I needed to see if there were duplicates, if there were blanks, and if there were strange fonts. I did these from the raw stage tables (bronze) to the views (silver).
+Checked for duplicates, blanks, strange fonts from raw stage(staging) to views (intermediate).
 
-## Phase 1: Solving Key SQL Problems
+## Phase 1: Solving Key SQL Problems - The Data Set-Up
+
+- [SQL scripts used in Supabase for set-up](sql/supabase_scripts_setup.sql)
+  
 A. Data Integrity: Defining Real Revenue
-- A common complaint is that dashboards do not contain correct information. My first investigation showed that not all Orders proceed to Invoices, and most Invoices do not even pass through Orders stage. I needed to have the single source of truth (SSOT) for the correct final revenue.
+- A common complaint is that dashboards do not contain correct information. Not all Orders proceed to Invoices, and most Invoices do not even pass through Orders stage. 
 
 ```
 | category            | cnt   |
@@ -42,7 +45,7 @@ A. Data Integrity: Defining Real Revenue
 | invoices_not_orders | 14280 |
 | orders_proceed      | 119   | 
 ```
-- This means taking out the Orders and the Refunds, which if included, will reveal inaccurate Sales figures. I created a SQL field in the events_raw table called final_net_revenue_usd, where only invoice data are pulled if they are not refunded.
+- To provide a Single Source of Truth and accurate Sales figures, only invoice data are pulled if they are not refunded. This is added as another field.
   
 ```
 -- SQL pulls in only invoices 
@@ -61,8 +64,7 @@ SET final_net_revenue_usd =
 
 
 B. Data Integrity: Cleaning Up Time Series
-- To make sure the monthly charts were accurate, I standardised each date to the first day of its month.
-- Note that further downstream this will be used for the monthly revenue.
+- Monthly standardization was needed for the dashboard, especially for monthly revenue.
 ```
 -- SQL year_month column
 -- Adding a column and populating it with the first day of the month 
@@ -77,38 +79,13 @@ SET year_month = DATE_TRUNC('month', event_date)::date;
 
 
 C. Metric Creation: Spotting Repeat Customers
-- To track loyalty, I needed to know exactly who was buying more than once. 
-- I then calculated the wait_days, the time from first purchase to second purchase.
-- Here, I used window functions to flag repeat customers.
-
-```
--- Add the last_invoice_date, next_invoice_date
--- and days_since_last_invoice, days_to_next_invoice
-
-CREATE OR REPLACE VIEW events_final AS
-SELECT
-    e.*,  
-    
-    -- Days since last invoice (NULL if none yet)
-    (e.event_date -
-     MAX(
-        CASE WHEN e.event_type = 'invoice' AND e.is_refunded = FALSE
-             THEN e.event_date END
-     ) OVER (
-        PARTITION BY e.customer_id
-        ORDER BY e.event_date
-        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-     )) AS days_since_last_invoice,
-
-    -- more transformations here
-```
-- I defined a repeater as someone who had a second purchase.
-- For each customer, I also included wait_days, the time from first purchase to second purchase (only).
-- Here, I used ROW_NUMBER() + OVER() to flag repeat customers.
+- To track loyalty, this SQL script defines the flag for repeat customers by tracking who was buying more than once, using window functions.
+- The idea is check the purchase events of each customer and a repeater is someone who had a second purchase ever.
+- Here, ROW_NUMBER() + OVER() is used to flag repeat customers where row number = 2.
 
 ```
 -- SQL Action: Marking repeat customers
--- Joining the days_since_last_invoice from previous silver events_final_new view to customers_raw
+-- Joining the days_since_last_invoice from previous events_final_new view to customers_raw
 -- Using Window Functions to identify customer's purchase order
 
 CREATE OR REPLACE VIEW customers_final AS
@@ -140,7 +117,7 @@ LEFT JOIN second_purchases sp
 ```
 
 D. Performance: Building The Final View as SSOT
-- I combined all clean data views for each of the initial tables into one simple View (gold layer) for the dashboard.
+- Finally, all clean data views (intermediate) for each of the initial tables into one simple View (mart)for the dashboard.
 
 ```
 -- SQL Action: Creating the final semantic layer
@@ -169,7 +146,7 @@ LEFT JOIN products_final p
 ```
 
 E. Preliminary Exploration of Monthly Revenue
-- Now with the gold layer, I was able to check the monthly revenue. 
+- Now with the combined view, true monthly revenue can be analyzed. 
 - The SQL figures showed that these have levelled off at around 500K per month.
 ```
 -- Monthly revenue
@@ -206,13 +183,17 @@ ORDER BY DATE_TRUNC('month', event_date)::date
 **/      
 
 ```
-I proceeded to do a lot more preliminary analysis using Postgres SQL in Supabase. 
-- [SQL scripts used in Supabase for set-up](sql/supabase_scripts_setup.sql)
+Preliminary analysis was also done in Postgres SQL in Supabase. 
+
 - [SQL scripts used in Supabase for preliminary analysis ](sql/supabase_scripts_analysis.sql) 
 - [Back to top](#summary)
+
+  
 ## Phase 2: The Strategic Insights From the Looker Studio Dashboard
-- After combining the Views into a gold layer, I exported the csv from Supabase and imported it into Google Sheets. So, I was able to proceed with the Looker Studio visualizations.
-- I organized them into four pages: Overview, Repeat Customers, Products and Sales Details.
+- After combining the Views into a final layer, csv file can be exported from Supabase and imported it into Google Sheets.
+- Dashboard here uses Google Looker Studio visualizations.
+- Four pages in the dashboard: Overview, Repeat Customers, Products and Sales Details.
+- 
   ### Dashboards
 - ![Overview](assets/page1_overview.PNG)
 - ![Repeat Customers](assets/page2_repeat_customers.PNG)
@@ -220,13 +201,13 @@ I proceeded to do a lot more preliminary analysis using Postgres SQL in Supabase
 - ![Sales](assets/page4_sales.PNG)
 [Back to top - Technical Foundation](#technical-foundation)
 
-- Here is a recap of the key Data Insights and the Strategic Actions.
+- Recap of the key Data Insights and the Strategic Actions.
 
 - ![Insights and Actions Table](assets/6.focus_areas.PNG)
 
 ## Recap
-- I confirmed that Total revenue is up, driven by repeat customers.
-- Monthly revenue is levelling off though.
-- To grow further, the business needs to ensure that repeat customers do not churn.
+- Total revenue is up, driven by repeat customers.
+- Monthly revenue is levelling off, so high-momentum regions can be explored.
+- Separately, the business needs to ensure that repeat customers do not churn.
 - Future growth will come from stronger annual plan sales, diving into growth markets, maximizing acquisition channels, regaining attachment rate and fixing the rising refund problem.
 
