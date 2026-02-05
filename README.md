@@ -1,4 +1,4 @@
-# Ecommerce Sales and Customer Analytics with Supabase, Google Sheets and Looker Studio
+# Ecommerce Sales and Customer Analytics 
 ## Tools: Supabase (Postgres SQL), Google Sheets, Google Looker Studio  
 [Click Here for the Dataset](https://datadna.onyxdata.co.uk/challenges/november-2025-datadna-ecommerce-analytics-challenge/)
 
