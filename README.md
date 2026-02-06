@@ -5,6 +5,7 @@
 # Overview  
 - Revenue growth is being driven almost entirely by repeat customers.  Need to protect this revenue stream with loyalty boosting efforts.
 - Monthly revenue is levelling off. Strong momentum in key markets like Germany and Australia can help jumpstart new revenue.
+  ![Monthly Revenue](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Ecommerce%20Analytics%20DataDNA_Overview_Bar%20chart.png)
 - Annual plans deliver far higher value per customer. This needs to be prioritized.
 - Attachment rates for add‑ons are slipping and refund losses are rising in several product categories.  Need to investigate causes to craft next steps.
 - In terms of process: This report establishes a unified revenue definition as a single source of truth,  so that teams see consistent numbers across the dashboard.
