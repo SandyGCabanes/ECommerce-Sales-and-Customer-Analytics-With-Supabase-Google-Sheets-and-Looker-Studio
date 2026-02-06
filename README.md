@@ -13,8 +13,8 @@
 ![Annual vs. Monthly](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Annual_vs_Monthly_30pct_crop.PNG)
 <br>
 - Attachment rates for add‑ons are slipping and refund losses are rising in several product categories.<br>
-Need to investigate causes to define next steps.<br><br>
-![Attachments and Refunds](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/attachment_refunds_crop.png)
+  Need to investigate causes to define next steps.<br><br>
+![Attachments and Refunds]()
 
 - In terms of process: This report establishes a unified revenue definition as a single source of truth,  so that teams see consistent numbers across the dashboard.
 
