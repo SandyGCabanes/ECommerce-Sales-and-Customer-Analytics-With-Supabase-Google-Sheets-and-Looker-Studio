@@ -1,6 +1,5 @@
 # Ecommerce Sales and Customer Analytics 
-## Tools: Supabase (Postgres SQL), Google Sheets, Google Looker Studio  
-[Click Here for the Dataset](https://datadna.onyxdata.co.uk/challenges/november-2025-datadna-ecommerce-analytics-challenge/)
+## Analyst's Report for Main Stakeholders
 
 # Overview  
 - Total Revenue is up and healthy, and monthly revenue is stable at around 500k.
@@ -34,7 +33,7 @@
 
 
 ---
-# Appendix: Technical Discussion  
+# Appendix: Technical Discussion for Technical Stakeholders
 ## 0. Pre-Work: Cleaning data in SQL
 Checked for duplicates, blanks, strange fonts from raw stage(staging) to views (intermediate).
 
@@ -43,7 +42,7 @@ Checked for duplicates, blanks, strange fonts from raw stage(staging) to views (
 - [SQL scripts used in Supabase for set-up](sql/supabase_scripts_setup.sql)
   
 A. Data Integrity: Defining Real Revenue
-- A common complaint is that dashboards do not contain correct information. Not all Orders proceed to Invoices, and most Invoices do not even pass through Orders stage. 
+- Not all Orders proceed to Invoices, and most Invoices do not even pass through Orders stage. 
 - To provide a Single Source of Truth and accurate Sales figures, only invoice data are pulled if they are not refunded. This is added as another field.
 
 B. Data Integrity: Cleaning Up Time Series
@@ -54,10 +53,8 @@ C. Metric Creation: Spotting Repeat Customers
 - The idea is check the purchase events of each customer and a repeater is someone who had a second purchase ever.
 - Here, ROW_NUMBER() + OVER() is used to flag repeat customers where row number = 2.
 
-
 D. Performance: Building The Final View as SSOT
 - Finally, all clean data views (intermediate) for each of the initial tables into one simple View (mart)for the dashboard.
-
 
 E. Preliminary Exploration of Monthly Revenue
 - Now with the combined view, true monthly revenue can be analyzed. 
@@ -71,12 +68,17 @@ Preliminary analysis was also done in Postgres SQL in Supabase.
 - After combining the Views into a final semantic layer, csv file can be exported from Supabase and imported it into Google Sheets.
 - Dashboard here uses Google Looker Studio visualizations.
 - Four pages in the dashboard: Overview, Repeat Customers, Products and Sales Details.
-- 
-  ### Dashboards
-- ![Overview](assets/page1_overview.PNG)
-- ![Repeat Customers](assets/page2_repeat_customers.PNG)
-- ![Products](assets/page3_products.PNG)
-- ![Sales](assets/page4_sales.PNG)
+- Dashboard demo:
+- ![Dashboard demo](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/output_20260206_75pct.gif)
+<br><br>
+- [Overview](assets/page1_overview.PNG)
+- [Repeat Customers](assets/page2_repeat_customers.PNG)
+- [Products](assets/page3_products.PNG)
+- [Sales](assets/page4_sales.PNG)
+
+# Tools: Supabase (Postgres SQL), Google Sheets, Google Looker Studio  
+
+[Click Here for the Dataset](https://datadna.onyxdata.co.uk/challenges/november-2025-datadna-ecommerce-analytics-challenge/)
 
 
 ## Key takeaways:
