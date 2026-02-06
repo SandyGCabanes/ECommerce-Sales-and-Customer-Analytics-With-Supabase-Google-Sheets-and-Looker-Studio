@@ -6,7 +6,8 @@
 ![Monthly Revenue](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Overview_Bar%20chart.png)
 - Strong momentum in non-US markets like Canada, Germany and Australia can help jumpstart new revenue and offset UK softening.
 ![Country Revenue](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Country_Revenue.png)
-- Revenue growth is being driven almost entirely by repeat customers.  (96% to 98% of monthly revenue.)  Need to protect loyal customers.
+- Revenue growth is being driven almost entirely by repeat customers.  (96% to 98% of monthly revenue.)  <br>
+  This indicates a need to protect loyal customers.
 ![Repeat Revenue](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Repeat%20Customers_Bar%20chart.png)
 - Annual plans deliver far higher value per customer vs. Monthly. <br>
   This needs to be prioritized. <br><br>
