@@ -9,11 +9,13 @@
 - Revenue growth is being driven almost entirely by repeat customers.  (96% to 98% of monthly revenue.)  Need to protect loyal customers.
 ![Repeat Revenue](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Repeat%20Customers_Bar%20chart.png)
 - Annual plans deliver far higher value per customer vs. Monthly. <br>
-  This needs to be prioritized. <br>
+  This needs to be prioritized. <br><br>
 ![Annual vs. Monthly](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Annual_vs_Monthly_30pct_crop.PNG)
+<br>
 - Attachment rates for add‑ons are slipping and refund losses are rising in several product categories.<br>
-Need to investigate causes to define next steps.<br>
-![Attachments and Refunds](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/attachment_refunds.png)
+Need to investigate causes to define next steps.<br><br>
+![Attachments and Refunds](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/attachment_refunds_crop.png)
+
 - In terms of process: This report establishes a unified revenue definition as a single source of truth,  so that teams see consistent numbers across the dashboard.
 
 # Insights and Strategic Actions:
