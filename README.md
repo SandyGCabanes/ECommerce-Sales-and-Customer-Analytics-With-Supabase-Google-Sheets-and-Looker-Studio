@@ -2,9 +2,9 @@
 ## Analyst's Report for Main Stakeholders
 
 # Overview  
-- Total Revenue is up and healthy, and monthly revenue is stable at around 500k.
+- Total Revenue is up and healthy, and monthly revenue is stable at around 500k. <br>
 ![Monthly Revenue](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Overview_Bar%20chart.png)
-- Strong momentum in non-US markets like Canada, Germany and Australia can help jumpstart new revenue and offset UK softening.
+- Strong momentum in non-US markets like Canada, Germany and Australia can help jumpstart new revenue and offset UK softening. <br>
 ![Country Revenue](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Country_Revenue.png)
 - Revenue growth is being driven almost entirely by repeat customers.  (96% to 98% of monthly revenue.)  <br>
   This indicates a need to protect loyal customers.<br>
@@ -25,7 +25,7 @@
 | Growth Markets     | Canada, Germany and Australia revenues<br>have promising growth.              | Dive into these markets to grow faster.<br> Explore markets with higher repeat rates.             |
 | Annual Plans       | Annual Billing brings in far more money<br>per customer than Monthly.         | Expand annual plan offerings and <br>optimize conversion flows.                        |
 | Product Attachment | Add-on attachment rate is dropping<br>4.5 percent across total plans.         | Rebuild attachment rate through targeted <br>cross-sell and bundling.          |
-| Refunds            | Refunds are rising in Developer Tools, Design,<br>AI Tools, Analytics, AI Productivity, and more,<br>adding up to $348K this year. | Investigate hihg-refund product lines and <br>address root causes. |
+| Refunds            | Refunds are rising in Developer Tools, Design,<br>AI Tools, Analytics, AI Productivity, and more,<br>adding up to $348K this year. | Investigate high-refund product lines and <br>address root causes. |
 
 
 # Technical Foundation 
