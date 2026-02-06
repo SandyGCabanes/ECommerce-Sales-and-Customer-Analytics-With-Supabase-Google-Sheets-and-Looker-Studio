@@ -2,7 +2,7 @@
 ## Analyst's Report for Main Stakeholders
 
 # Overview  
-- Total Revenue is up and healthy, and monthly revenue is stable at around 500k. <br>
+- Total Revenue is up 19% vs. YA, and monthly revenue is stable at around 500k. <br>
 ![Monthly Revenue](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Overview_Bar%20chart.png)
 - Strong momentum in non-US markets like Canada, Germany and Australia can help jumpstart new revenue and offset UK softening. <br>
 ![Country Revenue](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Country_Revenue.png)
