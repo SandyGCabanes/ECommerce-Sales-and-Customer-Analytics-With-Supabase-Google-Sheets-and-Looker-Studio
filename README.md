@@ -38,35 +38,17 @@
 
 ---
 # Appendix: Technical Discussion for Technical Stakeholders
-## 0. Pre-Work: Cleaning data in SQL
-Checked for duplicates, blanks, strange fonts from raw stage(staging) to views (intermediate).
+## Phase 0. Pre-Work: Cleaning data in SQL - Checked duplicates, blanks, strange fonts from raw stage(staging) to views (intermediate).
 
-## Phase 1: Solving Key SQL Problems - The Data Set-Up
+## Phase 1: Solving Key SQL Problems - Ensuring Data Integrity
 
 - [SQL scripts used in Supabase for set-up](sql/supabase_scripts_setup.sql)
   
-A. Data Integrity: Defining Real Revenue
-- Not all Orders proceed to Invoices, and most Invoices do not even pass through Orders stage. 
-- To provide a Single Source of Truth and accurate Sales figures, only invoice data are pulled if they are not refunded. This is added as another field.
-
-B. Data Integrity: Cleaning Up Time Series
-- Monthly standardization was needed for the dashboard, especially for monthly revenue.
-
-C. Metric Creation: Spotting Repeat Customers
-- To track loyalty, this SQL script defines the flag for repeat customers by tracking who was buying more than once, using window functions.
-- The idea is check the purchase events of each customer and a repeater is someone who had a second purchase ever.
-- Here, ROW_NUMBER() + OVER() is used to flag repeat customers where row number = 2.
-
-D. Performance: Building The Final View as SSOT
-- Finally, all clean data views (intermediate) for each of the initial tables into one simple View (mart)for the dashboard.
-
-E. Preliminary Exploration of Monthly Revenue
-- Now with the combined view, true monthly revenue can be analyzed. 
-- The SQL figures showed that these have levelled off at around 500K per month.
-
-Preliminary analysis was also done in Postgres SQL in Supabase. 
-
-- [SQL scripts used in Supabase for preliminary analysis ](sql/supabase_scripts_analysis.sql) 
+1. Defining Real Revenue - Only invoice data are pulled if they are not refunded. This is added as another field.
+2. Cleaning Up Time Series - Monthly standardization was needed for the dashboard, especially for monthly revenue.
+3. Metric Creation: Spotting Repeat Customers - Created flag for repeat customers by tracking who was buying more than once, using window functions.
+4. Building The Final View as SSOT - Finally, combined all clean data views for each of the initial tables into one simple View (mart)for the dashboard.
+5. Preliminary Exploration of Monthly Revenue - With the combined view, true monthly revenue can be analyzed. Ex. SQL analysis showed that monthly revenue stabilized at around 500K per month.  [SQL scripts used in Supabase for preliminary analysis ](sql/supabase_scripts_analysis.sql) 
   
 ## Phase 2: The Strategic Insights From the Looker Studio Dashboard
 - After combining the Views into a final semantic layer, csv file can be exported from Supabase and imported it into Google Sheets.
