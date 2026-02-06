@@ -71,7 +71,7 @@ Preliminary analysis was also done in Postgres SQL in Supabase.
 ## Phase 2: The Strategic Insights From the Looker Studio Dashboard
 - After combining the Views into a final semantic layer, csv file can be exported from Supabase and imported it into Google Sheets.
 - Dashboard here uses Google Looker Studio visualizations.
-- Four pages in the dashboard: Overview, Repeat Customers, Products and Sales Details. [Click to see Looker Studio Dashboard](https://lookerstudio.google.com/s/rGCRCcqr8rs)
+- Four pages in the dashboard: Overview, Repeat Customers, Products and Sales Details. [Click to see Looker Studio Dashboard. 60 second loading time.](https://lookerstudio.google.com/s/rGCRCcqr8rs)
 - Dashboard demo:
 - ![Dashboard demo](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/output_20260206_75pct.gif)
 <br><br>
