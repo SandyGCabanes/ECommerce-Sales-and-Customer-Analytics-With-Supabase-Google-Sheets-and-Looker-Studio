@@ -3,17 +3,26 @@
 [Click Here for the Dataset](https://datadna.onyxdata.co.uk/challenges/november-2025-datadna-ecommerce-analytics-challenge/)
 
 # Overview  
-- Revenue growth is being driven almost entirely by repeat customers.  Need to protect this revenue stream with loyalty boosting efforts.
-- Monthly revenue is levelling off. Strong momentum in key markets like Germany and Australia can help jumpstart new revenue.
-  ![Monthly Revenue](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Ecommerce%20Analytics%20DataDNA_Overview_Bar%20chart.png)
-- Annual plans deliver far higher value per customer. This needs to be prioritized.
+- Total Revenue is up and healthy, and monthly revenue is stable at around 500k.
+![Monthly Revenue](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Overview_Bar%20chart.png)
+- Strong momentum in key markets like Germany and Australia can help jumpstart new revenue.
+![Country Revenue](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Country_Revenue.png)
+- Revenue growth is being driven almost entirely by repeat customers.  (96% to 98% of monthly revenue.)  Need to protect loyal customers.
+![Repeat Revenue](https://github.com/SandyGCabanes/ECommerce-Sales-and-Customer-Analytics-With-Supabase-Google-Sheets-and-Looker-Studio/blob/main/assets/Repeat%20Customers_Bar%20chart.png)
+- Annual plans deliver far higher value per customer vs. Monthly. This needs to be prioritized.
+![Annual vs. Monthly]()
 - Attachment rates for add‑ons are slipping and refund losses are rising in several product categories.  Need to investigate causes to craft next steps.
+![Attachments and Refunds]()
 - In terms of process: This report establishes a unified revenue definition as a single source of truth,  so that teams see consistent numbers across the dashboard.
 
-# Key Insights
-- ![Insights and Actions Table](assets/6.focus_areas.PNG)
-
-- [Dashboards Section](#dashboards)
+# Insights and Strategic Actions:
+| Focus Area         | Data Insight                                                                 | Strategic Action                                                             |
+|--------------------|-------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| Repeat Customers   | Repeat customers drive practically all of the revenue<br>and growth.          | Strengthen retention programs using cross-sell insights<br>and targeting early repeat behavior . <br> Evaluate acquisition channels for quality vs. volume.|
+| Growth Markets     | Canada, Germany and Australia revenues<br>have promising growth.              | Dive into these markets to grow faster.<br> Explore markets with higher repeat rates.             |
+| Annual Plans       | Annual Billing brings in far more money<br>per customer than Monthly.         | Expand annual plan offerings and <br>optimize conversion flows.                        |
+| Product Attachment | Add-on attachment rate is dropping<br>4.5 percent across total plans.         | Rebuild attachment rate through targeted <br>cross-sell and bundling.          |
+| Refunds            | Refunds are rising in Developer Tools, Design,<br>AI Tools, Analytics, AI Productivity, and more,<br>adding up to $348K this year. | Investigate hihg-refund product lines and <br>address root causes. |
 
 
 # Technical Foundation 
@@ -23,13 +32,6 @@
 - A unified semantic layer was created by joining cleaned event, customer, and product views.  
 - This layer feeds the Looker Studio dashboard, which is organized into Overview, Repeat Customers, Products, and Sales Details.
 
-# Strategic Actions  
-- Strengthen retention programs targeting early repeat behavior.  
-- Expand annual plan offerings and optimize conversion flows.  
-- Investigate high‑refund product lines and address root causes.  
-- Rebuild attachment rate through targeted cross‑sell and bundling.  
-- Evaluate acquisition channels for quality rather than volume.  
-- Explore growth markets where repeat behavior is strongest.
 
 ---
 # Appendix: Technical Discussion  
@@ -64,8 +66,6 @@ E. Preliminary Exploration of Monthly Revenue
 Preliminary analysis was also done in Postgres SQL in Supabase. 
 
 - [SQL scripts used in Supabase for preliminary analysis ](sql/supabase_scripts_analysis.sql) 
-- [Back to top](#summary)
-
   
 ## Phase 2: The Strategic Insights From the Looker Studio Dashboard
 - After combining the Views into a final semantic layer, csv file can be exported from Supabase and imported it into Google Sheets.
@@ -77,11 +77,7 @@ Preliminary analysis was also done in Postgres SQL in Supabase.
 - ![Repeat Customers](assets/page2_repeat_customers.PNG)
 - ![Products](assets/page3_products.PNG)
 - ![Sales](assets/page4_sales.PNG)
-[Back to top - Technical Foundation](#technical-foundation)
 
-- Recap of the key Data Insights and the Strategic Actions.
-
-- ![Insights and Actions Table](assets/6.focus_areas.PNG)
 
 ## Key takeaways:
 - Total revenue is up, driven by repeat customers.
