@@ -38,7 +38,8 @@
 
 ---
 # Appendix: Technical Discussion for Technical Stakeholders
-## Phase 0. Pre-Work: Cleaning data in SQL - Checked duplicates, blanks, strange fonts from raw stage(staging) to views (intermediate).
+## Phase 0. Pre-Work: Cleaning data in SQL 
+- Checked duplicates, blanks, strange fonts from raw stage(staging) to views (intermediate).
 
 ## Phase 1: Solving Key SQL Problems - Ensuring Data Integrity
 
